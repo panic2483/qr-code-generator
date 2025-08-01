@@ -5,7 +5,7 @@ from tkinter import ttk
 from PIL import Image, ImageTk
 import sys
 
-quit_variable = False 
+quit_variable = False
 
 # Funktionen
 def quit():
@@ -27,6 +27,10 @@ def save_qr_code(): #Erstellt + Speichert den QR-Code
     qr_code_image = qr.make_image(fill_color = "black", back_color = "white")
     speicherordner = os.path.join(speicherpfad_input.get(), name_input.get() + ".png")
     qr_code_image.save(speicherordner)
+    global downloaded_qr_code
+    success_label = ttk.Label(root, text="QR-Code erfolgreich heruntergeladen!", foreground="green", background="white", font=("Arial", 14))
+    success_label.pack(fill="x")
+    
 
 #While Schleife = True, damit Programm durchgehend läuft, bis geschlossen wird
 while True:
